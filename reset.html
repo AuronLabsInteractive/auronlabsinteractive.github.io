@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Prosperity: 2056 — Jelszó visszaállítása</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#0b0f14; --panel:#121820; --text:#e7edf3; --muted:#8a97a6; --amber:#e8a33d; --red:#ff5c5c; --green:#4ad07a; --border:#243040; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; background:var(--bg); color:var(--text); font-family:"JetBrains Mono",monospace; min-height:100dvh; }
+  .wrap{ max-width:420px; margin:0 auto; padding:40px 22px; }
+  h1{ font-family:"Cinzel",serif; font-weight:900; font-size:22px; letter-spacing:.04em; margin:0 0 6px; }
+  .sub{ color:var(--muted); font-size:12px; letter-spacing:.06em; margin-bottom:26px; }
+  label{ display:block; font-size:10.5px; letter-spacing:.14em; color:var(--muted); margin:18px 0 7px; }
+  input{ width:100%; padding:14px; border-radius:12px; background:var(--panel); border:1.5px solid var(--border); color:var(--text); font-family:inherit; font-size:15px; }
+  input:focus{ outline:none; border-color:var(--amber); }
+  button{ width:100%; margin-top:22px; padding:14px; border-radius:12px; border:1.5px solid var(--amber); background:var(--amber); color:#1a1200; font-family:inherit; font-weight:700; font-size:14px; letter-spacing:.05em; cursor:pointer; }
+  button:disabled{ opacity:.55; cursor:default; }
+  .msg{ margin-top:18px; font-size:13px; line-height:1.55; }
+  .err{ color:var(--red); } .ok{ color:var(--green); }
+  .hint{ color:var(--muted); font-size:11px; margin-top:22px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Új jelszó</h1>
+  <div class="sub" id="sub">PROSPERITY: 2056 · SET NEW PASSWORD</div>
+
+  <div id="form">
+    <label for="p1">ÚJ JELSZÓ / NEW PASSWORD</label>
+    <input id="p1" type="password" autocomplete="new-password" placeholder="••••••••"/>
+    <label for="p2">ÚJRA / CONFIRM</label>
+    <input id="p2" type="password" autocomplete="new-password" placeholder="••••••••"/>
+    <button id="go">MENTÉS / SAVE</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="hint">
+    Állítsd be az új jelszót, majd térj vissza az alkalmazásba és jelentkezz be vele.<br>
+    Set your new password, then return to the app and sign in.
+  </div>
+</div>
+
+<script>
+  var SB_URL = "https://zhhgndamjxfvjoaqhccs.supabase.co";
+  var SB_PUBLISHABLE = "sb_publishable_5j66p7qlsFqhwgECru9G2w_d9KbtunU";
+
+  // A tokenek az URL hash-ében jönnek: #access_token=...&type=recovery&...
+  function parseHash(){
+    var h = (location.hash || "").replace(/^#/, "");
+    var out = {}; h.split("&").forEach(function(kv){
+      var i = kv.indexOf("="); if(i<0) return;
+      out[decodeURIComponent(kv.slice(0,i))] = decodeURIComponent(kv.slice(i+1));
+    });
+    return out;
+  }
+  var params = parseHash();
+  var accessToken = params.access_token || "";
+  var msg = document.getElementById("msg");
+  var form = document.getElementById("form");
+  var btn = document.getElementById("go");
+
+  if(!accessToken){
+    form.style.display = "none";
+    document.getElementById("sub").innerHTML =
+      '<span class="err">Hiányzik a visszaállító token. Nyisd meg az e-mailben kapott linket. / Missing reset token — open the link from your email.</span>';
+  }
+
+  btn && btn.addEventListener("click", async function(){
+    msg.className = "msg"; msg.textContent = "";
+    var p1 = document.getElementById("p1").value;
+    var p2 = document.getElementById("p2").value;
+    if(!p1 || p1.length < 6){ msg.className="msg err"; msg.textContent="A jelszó legyen legalább 6 karakter. / Min. 6 characters."; return; }
+    if(p1 !== p2){ msg.className="msg err"; msg.textContent="A két jelszó nem egyezik. / Passwords don't match."; return; }
+    btn.disabled = true; btn.textContent = "…";
+    try{
+      var res = await fetch(SB_URL + "/auth/v1/user", {
+        method: "PUT",
+        headers: { "apikey": SB_PUBLISHABLE, "Authorization": "Bearer " + accessToken, "Content-Type": "application/json" },
+        body: JSON.stringify({ password: p1 })
+      });
+      var txt = await res.text(); var data = null; try{ data = JSON.parse(txt); }catch(e){}
+      if(!res.ok){
+        var m = (data && (data.msg || data.error_description || data.message)) || ("HTTP " + res.status);
+        throw new Error(m);
+      }
+      form.querySelectorAll("input").forEach(function(i){ i.disabled = true; });
+      btn.style.display = "none";
+      msg.className = "msg ok";
+      msg.innerHTML = "Jelszó megváltoztatva. Térj vissza az alkalmazásba és jelentkezz be.<br>Password changed. Return to the app and sign in.";
+      // token eltávolítása az URL-ből (hogy ne maradjon a history-ban)
+      history.replaceState(null, "", location.pathname);
+    }catch(e){
+      btn.disabled = false; btn.textContent = "MENTÉS / SAVE";
+      msg.className = "msg err";
+      msg.textContent = "Hiba: " + (e && e.message ? e.message : e) + " (a link lejárhatott — kérj újat)";
+    }
+  });
+</script>
+</body>
+</html>
