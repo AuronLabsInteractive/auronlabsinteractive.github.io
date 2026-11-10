@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-QBfgSFwc/gDrpy3bNgAxinoMzkbHIRHXpSaJtXa7H7I='; script-src 'sha256-iTYHwqODW2q+RieHR3ZvKc7bqPmlvNpxcDQKlcYWq8k='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#3F6357">
+<title>FamilyBoard · Adatkezelés, feltételek, fióktörlés</title>
+<meta name="description" content="FamilyBoard — családi irányítópult. Adatkezelési tájékoztató, felhasználási feltételek, fiók törlése. · Family planner: privacy policy, terms, account deletion.">
+<style>/* FamilyBoard landing (v1.2) — statikus, külső betű / szkript nélkül */
+:root{ --ink:#23262B; --soft:#5B6169; --faint:#676D68; --pine:#3F6357; --pine-soft:#E4ECE8; --paper:#F4F5F1; --surface:#fff; --border:#E3E6DE; --coral:#A8402D; color-scheme:light; }
+@media (prefers-color-scheme: dark){ :root{ --ink:#ECEDE7; --soft:#A9AFA8; --faint:#949B94; --pine:#7DB09E; --pine-soft:#26342F; --paper:#181A1D; --surface:#22252A; --border:#333A38; --coral:#D97862; color-scheme:dark; } }
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+a{ color:var(--pine); }
+.wrap{ max-width:760px; margin:0 auto; padding:0 16px; }
+header.top{ padding:28px 0 8px; }
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo{ width:44px; height:44px; flex:none; border-radius:12px; background:#3F6357; color:#fff; display:flex; align-items:center; justify-content:center; font:800 16px/1 -apple-system,"Segoe UI",sans-serif; letter-spacing:.04em; }
+.brand h1{ margin:0; font-size:24px; line-height:1.2; } .brand .by{ font-size:13px; color:var(--faint); }
+.tag{ color:var(--soft); margin:10px 0 0; }
+.langs{ display:flex; gap:6px; margin:16px 0 0; }
+.langs button{ border:1.5px solid var(--border); background:var(--surface); color:var(--soft); font:600 13px/1 inherit; padding:8px 12px; border-radius:999px; cursor:pointer; }
+.langs button[aria-pressed="true"]{ background:var(--pine-soft); color:var(--pine); border-color:var(--pine); }
+nav.toc{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
+nav.toc a{ text-decoration:none; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-size:14px; font-weight:600; }
+section.card{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin:16px 0; scroll-margin-top:12px; }
+section.card h2{ margin:0 0 8px; font-size:20px; line-height:1.3; }
+section.card h3{ margin:18px 0 4px; font-size:16px; }
+section.card p, section.card li{ color:var(--soft); }
+section.card ul{ padding-left:20px; margin:6px 0; }
+.cta{ display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px; }
+.btn{ display:inline-block; text-decoration:none; text-align:center; background:#3F6357; color:#fff; font-weight:600; padding:12px 18px; border-radius:12px; border:none; font-size:16px; cursor:pointer; }
+.btn.ghost{ background:var(--pine-soft); color:var(--pine); }
+.code{ display:inline-block; font:700 26px/1.2 ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace; letter-spacing:4px; background:var(--pine-soft); color:var(--pine); border-radius:12px; padding:10px 16px; margin:6px 0; }
+.note{ font-size:13px; color:var(--faint); }
+.err{ color:var(--coral); font-weight:600; }
+footer{ padding:18px 0 40px; font-size:13px; color:var(--faint); }
+[data-lang]{ display:none; } html[lang="hu"] [data-lang="hu"], html[lang="en"] [data-lang="en"]{ display:block; }
+html[lang="hu"] span[data-lang="hu"], html[lang="en"] span[data-lang="en"]{ display:inline; }
+.small-card{ max-width:520px; margin:24px auto; }
+/* join / confirmed: állapot szerinti blokkok */
+.show-invite, .show-family, .show-code, .show-nocode, .show-desktop, .show-ok, .show-err{ display:none !important; }
+body.is-invite .show-invite, body.is-family .show-family, body.has-code .show-code, body.no-code .show-nocode, body.not-android .show-desktop, body.is-ok .show-ok, body.is-error .show-err{ display:block !important; }
+html[lang="hu"] body.is-invite .show-invite[data-lang="en"], html[lang="en"] body.is-invite .show-invite[data-lang="hu"],
+html[lang="hu"] body.is-family .show-family[data-lang="en"], html[lang="en"] body.is-family .show-family[data-lang="hu"],
+html[lang="hu"] body.has-code .show-code[data-lang="en"], html[lang="en"] body.has-code .show-code[data-lang="hu"],
+html[lang="hu"] body.no-code .show-nocode[data-lang="en"], html[lang="en"] body.no-code .show-nocode[data-lang="hu"],
+html[lang="hu"] body.not-android .show-desktop[data-lang="en"], html[lang="en"] body.not-android .show-desktop[data-lang="hu"],
+html[lang="hu"] body.is-ok .show-ok[data-lang="en"], html[lang="en"] body.is-ok .show-ok[data-lang="hu"],
+html[lang="hu"] body.is-error .show-err[data-lang="en"], html[lang="en"] body.is-error .show-err[data-lang="hu"]{ display:none !important; }
+</style></head>
+<body data-page="home"><div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">FB</div><div><h1>FamilyBoard</h1><div class="by">AuronLabs Interactive</div></div></div>
+  <p class="tag" data-lang="hu">Családi irányítópult — feladatok, bevásárlólista, órarend, napirend, jegyzetek egy helyen, az egész családnak.</p>
+  <p class="tag" data-lang="en">Your family planner — tasks, shopping lists, timetable, daily plan and notes in one place, for the whole family.</p>
+  <div class="langs" role="group" aria-label="Language"><button data-set="hu" aria-pressed="false">Magyar</button><button data-set="en" aria-pressed="false">English</button></div>
+  <div class="cta"><a class="btn play-link" href="#" rel="noopener"><span data-lang="hu">Letöltés (Google Play)</span><span data-lang="en">Get it on Google Play</span></a></div>
+  <nav class="toc" data-lang="hu"><a href="#delete-hu">Fiók és adatok törlése</a><a href="#privacy-hu">Adatkezelési tájékoztató</a><a href="#terms-hu">Felhasználási feltételek</a><a href="#licenses-hu">Licencek &amp; infó</a></nav>
+  <nav class="toc" data-lang="en"><a href="#delete-en">Account &amp; data deletion</a><a href="#privacy-en">Privacy policy</a><a href="#terms-en">Terms of service</a><a href="#licenses-en">Licenses &amp; info</a></nav>
+</header>
+
+<!-- ===================== MAGYAR ===================== -->
+<div data-lang="hu">
+<section class="card" id="delete-hu"><h2>Fiók és adatok törlése</h2>
+  <h3>Az appban (azonnal)</h3><p>Profil → Fiók → Veszélyes zóna → <b>Fiók törlése</b>. A törlés végleges.</p>
+  <h3>E-mailben (app nélkül)</h3><p>Írj a <a href="mailto:privacy@auronlabsinteractive.com?subject=Account%20Deletion%20Request">privacy@auronlabsinteractive.com</a> címre „Account Deletion Request” tárggyal, a fiókod e-mail címéről. 30 napon belül töröljük, és visszaigazoljuk.</p>
+  <h3>Mi törlődik</h3><ul>
+    <li>a belépésed (e-mail cím, jelszó) és a profilod;</li>
+    <li>azok a családok minden adatukkal együtt, amelyekben rajtad kívül nincs más belépni képes tag;</li>
+    <li>a közös családokban: a csak általad látható (egyéni láthatóságú) jegyzeteid és feladataid, a kedvenceid és az emlékeztetőid.</li></ul>
+  <p>A közös családban megosztott tartalmak (pl. a közös bevásárlólista, feladatok) a család többi tagjánál maradnak. Ha te voltál az egyetlen admin, a jog egy másik felnőtt tagra száll át. Az <b>Adataim exportálása (JSON)</b> gombbal (Profil → Fiók) előtte lementheted az adataidat.</p>
+</section>
+
+<section class="card" id="privacy-hu"><h2>Adatkezelési tájékoztató</h2>
+  <p class="note">Hatályos: 2026. november 8. · FamilyBoard v1.2</p>
+  <h3>1. Adatkezelő</h3><p>AuronLabs Interactive (Magyarország, EU) · <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a>. Adatvédelmi kérdésben ide írj; a levél tárgyába írd: „Privacy”.</p>
+  <h3>2. Kiknek szól</h3><p>A FamilyBoard családoknak készült. Saját fiókot <b>16 éves kortól</b> lehet létrehozni. Fiatalabb gyereket a szülő „gondozott tagként” vehet fel: ilyenkor a gyereknek nincs saját belépése, az adatait a szülő (a család adminja) rögzíti és kezeli, és bármikor kérheti a törlésüket.</p>
+  <h3>3. Milyen adatokat, miért és milyen jogalapon kezelünk</h3><ul>
+    <li><b>Fiók</b> — e-mail cím, jelszó (csak titkosított lenyomatként), név, profilkép / avatar, nyelv, beállítások. Cél: belépés, az app működtetése. Jogalap: a szolgáltatás nyújtása (szerződés, GDPR 6. cikk (1) b).</li>
+    <li><b>Családi tartalom</b> — feladatok, listák, jegyzetek, napló, étkezések, órarend és tanévrend, névjegyek, pontok és jutalmak, a család eseménynaplója. Csak a család tagjai látják, a beállított láthatóság szerint, amit a szerver is ellenőriz. Jogalap: szerződés.</li>
+    <li><b>Mérések</b> — köztük egészségügyi adat is lehet (pl. láz, vérnyomás); ez különleges adat (GDPR 9. cikk). Csak akkor rögzül, ha te magad beírod, és mérésenként beállíthatod, ki láthatja. Jogalap: kifejezett hozzájárulásod, amelyet a bejegyzés törlésével bármikor visszavonhatsz.</li>
+    <li><b>Iratok</b> — okmány neve, száma, lejárata, a lejárati emlékeztetőhöz. Iratonként állítható, ki látja; az okmányszám nem kerül értesítésbe. Jogalap: szerződés.</li>
+    <li><b>Meghívók</b> — a meghívott e-mail címe, a meghívó neve, a meghívó állapota. A címet a meghívó adja meg; csak a meghívó levél elküldésére és a csatlakozásra használjuk. Jogalap: a meghívó és a család jogos érdeke (6. cikk (1) f).</li>
+    <li><b>Értesítések</b> — a telefon értesítési azonosítója (push token) és az értesítési beállítások. Jogalap: szerződés.</li>
+    <li><b>Rendszerlevelek</b> — megerősítés, jelszó, meghívó. Reklámlevelet nem küldünk.</li>
+    <li><b>Biztonság és hibakeresés</b> — a szerver rövid ideig technikai naplót vezet (pl. időpont, IP-cím). Jogalap: jogos érdek (a szolgáltatás biztonsága).</li></ul>
+  <p>Nincs hirdetés, nincs követés, nincs analitika, és az adataidat nem adjuk el senkinek.</p>
+  <h3>4. Mások adatai, amelyeket te rögzítesz</h3><p>Ha családtagról, gyerekről vagy ismerősről (pl. névjegy, mérés, meghívó) rögzítesz adatot, győződj meg róla, hogy jogosan teszed — gyereknél szülőként. Ha valaki kéri, az adatait töröld, vagy írj nekünk.</p>
+  <h3>5. AI-funkciók</h3><p>Okos bevitel, fotóról felismerés, órarend- és tanévrend-beolvasás — csak ha a család adminja bekapcsolta, és csak amikor használod. Ilyenkor csak a feldolgozáshoz szükséges adatot küldjük el az Anthropicnak: a beírt szöveget vagy a fotót, a családtagok keresztnevét és a listák nevét (hogy felismerje, kié a feladat és melyik listára kerül) — e-mail címet nem. Az appban minden ilyen küldés előtt megjelenik ez a tájékoztatás. Az Anthropic adatfeldolgozóként jár el, a beküldött adatot nem használja modellek tanítására, és rövid időn belül törli. A képet mi nem tároljuk. Az AI-válasz hibás lehet: mentés előtt mindig átnézheted, és automatizált döntést nem hozunk rólad.</p>
+  <h3>6. Adatfeldolgozók</h3><ul>
+    <li><b>Supabase</b> — adatbázis és belépés; a szerver Frankfurtban (EU) van.</li>
+    <li><b>Resend</b> — rendszerlevelek; EU-régió.</li>
+    <li><b>Google Firebase Cloud Messaging</b> — push-értesítések kézbesítése.</li>
+    <li><b>Anthropic</b> (USA) — AI-feldolgozás, csak bekapcsolt AI-funkciónál.</li>
+    <li><b>Google Play</b> — az app terjesztése (saját adatkezelési tájékoztatója szerint).</li></ul>
+  <h3>7. Adattovábbítás az EU-n kívülre</h3><p>Az adatbázis az EU-ban van. Ha egy szolgáltató az EU-n kívül (pl. az USA-ban) dolgoz fel adatot (AI, push), azt az EU–USA adatvédelmi keretrendszer és / vagy az Európai Bizottság általános szerződési feltételei védik.</p>
+  <h3>8. Meddig tároljuk</h3><ul>
+    <li>Fiók- és családi adatok: amíg a fiókod / a családod létezik.</li>
+    <li>Mérések, iratok: amíg nem törlöd őket, vagy a fiókodat.</li>
+    <li>El nem fogadott meghívó: 7 napig érvényes; a család törlésével törlődik. A küldések naplója 7 nap.</li>
+    <li>Push-token: kijelentkezésig vagy a fiók törléséig.</li>
+    <li>Technikai napló: legfeljebb néhány napig.</li>
+    <li>Törlés után a biztonsági mentésekből legkésőbb 30 napon belül tűnik el minden.</li></ul>
+  <h3>9. Biztonság</h3><p>Titkosított kapcsolat (HTTPS), titkosított jelszó-tárolás, szerveroldali hozzáférés-ellenőrzés (minden adat csak a jogosult családtagoknak érhető el), a szerverek az EU-ban. Adatvédelmi incidens esetén a törvény szerint értesítjük a hatóságot és — ha szükséges — téged.</p>
+  <h3>10. Jogaid</h3><p>Kérhetsz hozzáférést, helyesbítést, törlést, korlátozást, adathordozhatóságot (az appban: Adataim exportálása), és tiltakozhatsz a jogos érdeken alapuló kezelés ellen. A kérés ingyenes; egy hónapon belül válaszolunk (összetett esetben ez két hónappal meghosszabbodhat, erről értesítünk). Ha kétséges, ki kéri, igazolást kérhetünk. Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH, naih.hu) vagy a lakóhelyed szerinti hatósághoz fordulhatsz — de előbb szívesen segítünk mi.</p>
+  <h3>11. Változások</h3><p>Ha a tájékoztató lényegesen változik, az appban előre jelezzük; a hatály dátuma a lap tetején látszik.</p>
+</section>
+
+<section class="card" id="terms-hu"><h2>Felhasználási feltételek</h2>
+  <p class="note">Hatályos: 2026. november 8.</p>
+  <h3>1. A szerződés</h3><p>Ezek a feltételek közted és az AuronLabs Interactive között jönnek létre, amikor regisztrálsz vagy használod a FamilyBoardot. Az adatkezelést az Adatkezelési tájékoztató írja le. Az appot a Google Play terjeszti; a letöltésre a Google Play saját feltételei is vonatkoznak.</p>
+  <h3>2. Ki használhatja</h3><p>Saját fiókot 16 éves kortól lehet nyitni. Fiatalabb gyereket a szülő gondozott tagként vehet fel (lásd az Adatkezelési tájékoztatót).</p>
+  <h3>3. A szolgáltatás</h3><p>A FamilyBoard családi tervező: feladatok, listák, órarend, napirend, jegyzetek, mérések, iratok, értesítések. Jelenleg ingyenes. Ha később fizetős kiegészítő jelenik meg, előre jelezzük, az ára és a feltételei vásárlás előtt látszanak, és a meglévő alapfunkciók nem válnak visszamenőleg fizetőssé.</p>
+  <h3>4. Fiók és biztonság</h3><p>Valós, a saját e-mail címedet add meg, a jelszavadat ne add ki. A fiók személyes, nem ruházható át. Ha illetéktelen hozzáférést gyanítasz, változtass jelszót, és írj nekünk.</p>
+  <h3>5. Család, admin, meghívók</h3><p>A család adminja dönt arról, ki tagja a családnak, milyen szerepkörrel, és ő felel a gondozott tagok adataiért. Meghívót csak olyannak küldj, akit ismersz; a meghívó nem használható kéretlen levelek küldésére (a küldés korlátozott, visszaélésnél felfüggeszthetjük).</p>
+  <h3>6. Tartalmak</h3><p>A tartalmaid a tieid. Csak annyi jogot kapunk, amennyi a szolgáltatás működtetéséhez kell: tárolás, és a megjelenítés azoknak, akiknek a láthatóság szerint engedted. Ne tárolj jogsértő, más jogait sértő, sértő vagy erőszakos tartalmat, és csak olyan adatot rögzíts másokról, amelyre jogosult vagy.</p>
+  <h3>7. Tilos</h3><ul><li>az app vagy a szerver feltörése, visszafejtése, terhelése, automatizált tömeges használata;</li><li>más fiókjához vagy családjához való hozzáférés kísérlete;</li><li>az app másolása, továbbértékesítése.</li></ul>
+  <h3>8. Mérések, iratok, AI</h3><p>A mérések és az emlékeztetők segítenek, de <b>nem orvosi tanácsadás</b>, és nem helyettesítik az orvost. Fontos határidőre (pl. okmány lejárata) ne csak az appra hagyatkozz. Az AI-funkciók eredménye hibás lehet: mentés előtt nézd át.</p>
+  <h3>9. Elérhetőség, frissítések</h3><p>Igyekszünk folyamatosan és hibamentesen működtetni az appot, de karbantartás vagy külső szolgáltató hibája miatt átmenetileg elérhetetlen lehet. A frissítések javíthatnak, bővíthetnek; a biztonsági frissítést érdemes mielőbb telepíteni.</p>
+  <h3>10. Szavatosság, felelősség</h3><p>A digitális tartalomra vonatkozó jogszabályi szavatossági jogaidat ezek a feltételek nem korlátozzák. Ezen túl felelősségünk a jogszabályok által megengedett mértékig korlátozott; a szándékosan vagy súlyos gondatlansággal okozott kárért, illetve az életet, testi épséget, egészséget megkárosító szerződésszegésért való felelősséget nem zárjuk ki.</p>
+  <h3>11. Megszüntetés</h3><p>A fiókodat bármikor törölheted (Profil → Fiók). A feltételek súlyos vagy ismételt megsértése esetén a fiókot — lehetőség szerint előzetes értesítés után — felfüggeszthetjük vagy megszüntethetjük.</p>
+  <h3>12. Módosítás</h3><p>A lényeges változásokat legalább 30 nappal előbb jelezzük az appban. Ha nem értesz egyet, a fiókodat törölheted.</p>
+  <h3>13. Panasz, vita, jog</h3><p>Panaszodat a <a href="mailto:support@auronlabsinteractive.com">support@auronlabsinteractive.com</a> címre küldd; 30 napon belül válaszolunk. Fogyasztóként a lakóhelyed szerinti békéltető testülethez is fordulhatsz. A magyar jog az irányadó, de ez nem fosztja meg az EU-ban élő fogyasztót a lakóhelye szerinti kötelező fogyasztóvédelmi szabályoktól. Ha egy pont érvénytelen, a többi hatályban marad.</p>
+</section>
+
+<section class="card" id="licenses-hu"><h2>Licencek &amp; infó</h2>
+  <p>Hirdetés nincs. Fiók törlése: lásd fent. Nyílt forrású összetevők: React, Supabase JS, Capacitor (MIT licenc); Inter, Space Grotesk, IBM Plex Mono, Source Serif 4 betűtípusok (SIL Open Font License).</p>
+</section>
+</div>
+
+<!-- ===================== ENGLISH ===================== -->
+<div data-lang="en">
+<section class="card" id="delete-en"><h2>Account &amp; data deletion</h2>
+  <h3>In the app (immediate)</h3><p>Profile → Account → Danger zone → <b>Delete account</b>. Deletion is permanent.</p>
+  <h3>By email (no app needed)</h3><p>Write to <a href="mailto:privacy@auronlabsinteractive.com?subject=Account%20Deletion%20Request">privacy@auronlabsinteractive.com</a> with the subject “Account Deletion Request”, from your account’s email address. We delete it within 30 days and confirm.</p>
+  <h3>What gets deleted</h3><ul>
+    <li>your sign-in (email, password) and your profile;</li>
+    <li>families where no other member can sign in — together with all their data;</li>
+    <li>in shared families: your private (custom-visibility) notes and tasks, your favourites and reminders.</li></ul>
+  <p>Content shared within a family (e.g. the shared shopping list, tasks) stays with the other members. If you were the only admin, admin rights pass to another adult member. You can save your data first with <b>Export my data (JSON)</b> (Profile → Account).</p>
+</section>
+
+<section class="card" id="privacy-en"><h2>Privacy policy</h2>
+  <p class="note">Effective: 8 November 2026 · FamilyBoard v1.2</p>
+  <h3>1. Data controller</h3><p>AuronLabs Interactive (Hungary, EU) · <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a>. Write here about anything privacy-related, with “Privacy” in the subject line.</p>
+  <h3>2. Who it’s for</h3><p>FamilyBoard is made for families. You can create your own account <b>from age 16</b>. A parent can add a younger child as a “managed member”: the child has no sign-in of their own, the parent (the family admin) enters and manages their data, and can ask for it to be deleted at any time.</p>
+  <h3>3. What we process, why, and on what legal basis</h3><ul>
+    <li><b>Account</b> — email address, password (stored only as a secure hash), name, profile picture / avatar, language, settings. Purpose: sign-in and running the app. Legal basis: providing the service (contract, GDPR Art. 6(1)(b)).</li>
+    <li><b>Family content</b> — tasks, lists, notes, journal, meals, timetable and school calendar, contacts, points and rewards, the family activity log. Only family members can see it, according to the visibility you set, which the server also enforces. Legal basis: contract.</li>
+    <li><b>Measurements</b> — these may include health data (e.g. temperature, blood pressure), a special category under GDPR Art. 9. They are stored only when you enter them yourself, and you choose who can see each one. Legal basis: your explicit consent, which you can withdraw at any time by deleting the entry.</li>
+    <li><b>Documents</b> — document name, number and expiry date, for expiry reminders. Visibility is set per document; the number never appears in a notification. Legal basis: contract.</li>
+    <li><b>Invites</b> — the invited email address, the inviter’s name and the invite status. The address is entered by the inviter and used only to send the invite and let the person join. Legal basis: the legitimate interest of the inviter and the family (Art. 6(1)(f)).</li>
+    <li><b>Notifications</b> — your phone’s notification token (push token) and notification settings. Legal basis: contract.</li>
+    <li><b>System emails</b> — confirmation, password, invites. We don’t send marketing emails.</li>
+    <li><b>Security and troubleshooting</b> — the server keeps a short technical log (e.g. time, IP address). Legal basis: legitimate interest (keeping the service secure).</li></ul>
+  <p>No ads, no tracking, no analytics — and we never sell your data.</p>
+  <h3>4. Other people’s data you enter</h3><p>If you enter data about a family member, a child or an acquaintance (e.g. a contact, a measurement, an invite), make sure you’re entitled to — as a parent for your child. If someone asks, delete their data, or write to us.</p>
+  <h3>5. AI features</h3><p>Smart entry, recognition from a photo, timetable and school-calendar import — only if the family admin turned them on, and only when you use them. We then send Anthropic only what the task needs: the text or photo you entered, family members’ first names and list names (so it can tell who a task is for and which list an item belongs to) — never email addresses. The app shows this notice before sending. Anthropic acts as our processor, does not use the submitted data to train its models, and deletes it after a short period. We don’t store the image. AI output can be wrong: you can always review it before saving, and no automated decision is made about you.</p>
+  <h3>6. Processors</h3><ul>
+    <li><b>Supabase</b> — database and sign-in; servers in Frankfurt (EU).</li>
+    <li><b>Resend</b> — system emails; EU region.</li>
+    <li><b>Google Firebase Cloud Messaging</b> — delivering push notifications.</li>
+    <li><b>Anthropic</b> (USA) — AI processing, only with AI features on.</li>
+    <li><b>Google Play</b> — app distribution (under its own privacy policy).</li></ul>
+  <h3>7. Transfers outside the EU</h3><p>The database is in the EU. Where a provider processes data outside the EU (e.g. in the USA — AI, push), the transfer is covered by the EU–US Data Privacy Framework and / or the European Commission’s Standard Contractual Clauses.</p>
+  <h3>8. Retention</h3><ul>
+    <li>Account and family data: as long as your account / family exists.</li>
+    <li>Measurements, documents: until you delete them or your account.</li>
+    <li>Unaccepted invites: valid for 7 days; deleted together with the family. The send log is kept for 7 days.</li>
+    <li>Push token: until you sign out or delete your account.</li>
+    <li>Technical logs: a few days at most.</li>
+    <li>After deletion, everything disappears from backups within 30 days at the latest.</li></ul>
+  <h3>9. Security</h3><p>Encrypted connections (HTTPS), hashed passwords, server-side access control (data is available only to authorised family members), servers in the EU. In case of a personal data breach we notify the authority and — where required — you, as the law requires.</p>
+  <h3>10. Your rights</h3><p>You can request access, rectification, erasure, restriction and data portability (in the app: Export my data), and object to processing based on legitimate interest. Requests are free; we reply within one month (extendable by two months for complex cases — we’ll tell you). If we’re unsure who is asking, we may ask you to verify your identity. You can complain to the Hungarian authority (NAIH, naih.hu) or the authority where you live — but we’d be glad to help first.</p>
+  <h3>11. Changes</h3><p>If this policy changes materially, we’ll announce it in the app in advance; the effective date is shown at the top.</p>
+</section>
+
+<section class="card" id="terms-en"><h2>Terms of service</h2>
+  <p class="note">Effective: 8 November 2026</p>
+  <h3>1. The agreement</h3><p>These terms form an agreement between you and AuronLabs Interactive when you sign up for or use FamilyBoard. How we handle data is described in the Privacy policy. The app is distributed through Google Play, whose own terms also apply to the download.</p>
+  <h3>2. Who can use it</h3><p>You can open your own account from age 16. A parent can add a younger child as a managed member (see the Privacy policy).</p>
+  <h3>3. The service</h3><p>FamilyBoard is a family planner: tasks, lists, timetable, daily plan, notes, measurements, documents, notifications. It is currently free. If paid extras come later, we’ll announce them in advance, the price and terms will be shown before purchase, and existing core features won’t become paid retroactively.</p>
+  <h3>4. Account and security</h3><p>Use your own real email address and don’t share your password. Accounts are personal and not transferable. If you suspect unauthorised access, change your password and contact us.</p>
+  <h3>5. Family, admin, invites</h3><p>The family admin decides who belongs to the family and with which role, and is responsible for the data of managed members. Only invite people you know; invites must not be used to send unsolicited email (sending is limited, and we may suspend it in case of abuse).</p>
+  <h3>6. Content</h3><p>Your content is yours. We only get the rights needed to run the service: storing it and showing it to the people your visibility settings allow. Don’t store unlawful, infringing, offensive or violent content, and only enter data about others that you are entitled to.</p>
+  <h3>7. Not allowed</h3><ul><li>hacking, reverse engineering or overloading the app or the server, or automated mass use;</li><li>trying to access someone else’s account or family;</li><li>copying or reselling the app.</li></ul>
+  <h3>8. Measurements, documents, AI</h3><p>Measurements and reminders help, but they are <b>not medical advice</b> and don’t replace a doctor. Don’t rely solely on the app for important deadlines (e.g. document expiry). AI features can be wrong: review the result before saving.</p>
+  <h3>9. Availability, updates</h3><p>We aim to keep the app running and error-free, but it may be temporarily unavailable due to maintenance or a third-party provider’s outage. Updates may fix or add features; security updates should be installed promptly.</p>
+  <h3>10. Warranty, liability</h3><p>These terms don’t limit your statutory rights regarding digital content. Beyond that, our liability is limited to the extent permitted by law; we don’t exclude liability for damage caused intentionally or by gross negligence, or for breaches harming life, physical integrity or health.</p>
+  <h3>11. Termination</h3><p>You can delete your account at any time (Profile → Account). We may suspend or close an account for serious or repeated breaches of these terms — with prior notice where possible.</p>
+  <h3>12. Changes</h3><p>We’ll announce material changes in the app at least 30 days in advance. If you don’t agree, you can delete your account.</p>
+  <h3>13. Complaints, disputes, law</h3><p>Send complaints to <a href="mailto:support@auronlabsinteractive.com">support@auronlabsinteractive.com</a>; we reply within 30 days. As a consumer you may also turn to the conciliation body where you live. Hungarian law applies, but this doesn’t deprive consumers in the EU of the mandatory consumer-protection rules of their country of residence. If any clause is invalid, the rest stays in force.</p>
+</section>
+
+<section class="card" id="licenses-en"><h2>Licenses &amp; info</h2>
+  <p>No ads. Account deletion: see above. Open-source components: React, Supabase JS, Capacitor (MIT license); Inter, Space Grotesk, IBM Plex Mono, Source Serif 4 fonts (SIL Open Font License).</p>
+</section>
+</div>
+
+<footer>© 2026 AuronLabs Interactive · FamilyBoard v1.2 · <a href="mailto:support@auronlabsinteractive.com">support@auronlabsinteractive.com</a></footer>
+</div><script>// FamilyBoard landing (v1.2) — nyelvváltás + a join / confirmed oldalak logikája. Adatot nem küld sehová.
+(function () {
+  var PKG = 'com.mfb.family';
+  var PLAY = 'https://play.google.com/store/apps/details?id=' + PKG;
+  var html = document.documentElement;
+  function pickLang() {
+    var h = (location.hash || '').match(/-(hu|en)$/);
+    if (h) return h[1];
+    try { var s = localStorage.getItem('fb_lang'); if (s === 'hu' || s === 'en') return s; } catch (e) {}
+    return /^hu/i.test(navigator.language || '') ? 'hu' : 'en';
+  }
+  function setLang(l) {
+    html.lang = l;
+    try { localStorage.setItem('fb_lang', l); } catch (e) {}
+    var bs = document.querySelectorAll('.langs button');
+    for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-set') === l ? 'true' : 'false');
+  }
+  setLang(pickLang());
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.langs button');
+    if (b) setLang(b.getAttribute('data-set'));
+  });
+  window.addEventListener('hashchange', function () { var h = (location.hash || '').match(/-(hu|en)$/); if (h) setLang(h[1]); });
+
+  var android = /Android/i.test(navigator.userAgent || '');
+  // Android: intent:// — ha nincs telepítve, a Play Áruházba visz; máshol a sima familyboard:// link
+  function appLink(path) {
+    return android ? 'intent://' + path + '#Intent;scheme=familyboard;package=' + PKG + ';S.browser_fallback_url=' + encodeURIComponent(PLAY) + ';end' : 'familyboard://' + path;
+  }
+  function setText(sel, t) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].textContent = t; }
+  function setHref(sel, h) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].setAttribute('href', h); }
+  setHref('.play-link', PLAY);
+  var page = document.body.getAttribute('data-page');
+
+  if (page === 'join') {
+    var q = new URLSearchParams(location.search);
+    var inv = (q.get('i') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var fam = (q.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var code = '', path = '';
+    if (/^[A-Z0-9]{8}$/.test(inv)) { code = inv.slice(0, 4) + '-' + inv.slice(4); path = 'invite/' + code; document.body.classList.add('is-invite'); }
+    else if (/^[A-Z0-9]{4,12}$/.test(fam)) { code = fam; path = 'join/' + code; document.body.classList.add('is-family'); }
+    if (code) { setText('.the-code', code); setHref('.open-app', appLink(path)); document.body.classList.add('has-code'); }
+    else document.body.classList.add('no-code');
+    if (!android) document.body.classList.add('not-android');
+  }
+  if (page === 'confirmed') {
+    // a Supabase a munkamenetet a # után küldi — itt NEM használjuk: azonnal töröljük a címsorból és az előzményekből
+    var frag = location.hash || '';
+    var err = /error/.test(frag) || /error/.test(location.search);
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+    document.body.classList.add(err ? 'is-error' : 'is-ok');
+    setHref('.open-app', appLink('auth/confirmed'));
+  }
+})();
+</script></body></html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-QBfgSFwc/gDrpy3bNgAxinoMzkbHIRHXpSaJtXa7H7I='; script-src 'sha256-iTYHwqODW2q+RieHR3ZvKc7bqPmlvNpxcDQKlcYWq8k='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#3F6357">
+<meta name="robots" content="noindex">
+<title>FamilyBoard · E-mail megerősítve / Email confirmed</title><style>/* FamilyBoard landing (v1.2) — statikus, külső betű / szkript nélkül */
+:root{ --ink:#23262B; --soft:#5B6169; --faint:#676D68; --pine:#3F6357; --pine-soft:#E4ECE8; --paper:#F4F5F1; --surface:#fff; --border:#E3E6DE; --coral:#A8402D; color-scheme:light; }
+@media (prefers-color-scheme: dark){ :root{ --ink:#ECEDE7; --soft:#A9AFA8; --faint:#949B94; --pine:#7DB09E; --pine-soft:#26342F; --paper:#181A1D; --surface:#22252A; --border:#333A38; --coral:#D97862; color-scheme:dark; } }
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+a{ color:var(--pine); }
+.wrap{ max-width:760px; margin:0 auto; padding:0 16px; }
+header.top{ padding:28px 0 8px; }
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo{ width:44px; height:44px; flex:none; border-radius:12px; background:#3F6357; color:#fff; display:flex; align-items:center; justify-content:center; font:800 16px/1 -apple-system,"Segoe UI",sans-serif; letter-spacing:.04em; }
+.brand h1{ margin:0; font-size:24px; line-height:1.2; } .brand .by{ font-size:13px; color:var(--faint); }
+.tag{ color:var(--soft); margin:10px 0 0; }
+.langs{ display:flex; gap:6px; margin:16px 0 0; }
+.langs button{ border:1.5px solid var(--border); background:var(--surface); color:var(--soft); font:600 13px/1 inherit; padding:8px 12px; border-radius:999px; cursor:pointer; }
+.langs button[aria-pressed="true"]{ background:var(--pine-soft); color:var(--pine); border-color:var(--pine); }
+nav.toc{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
+nav.toc a{ text-decoration:none; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-size:14px; font-weight:600; }
+section.card{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin:16px 0; scroll-margin-top:12px; }
+section.card h2{ margin:0 0 8px; font-size:20px; line-height:1.3; }
+section.card h3{ margin:18px 0 4px; font-size:16px; }
+section.card p, section.card li{ color:var(--soft); }
+section.card ul{ padding-left:20px; margin:6px 0; }
+.cta{ display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px; }
+.btn{ display:inline-block; text-decoration:none; text-align:center; background:#3F6357; color:#fff; font-weight:600; padding:12px 18px; border-radius:12px; border:none; font-size:16px; cursor:pointer; }
+.btn.ghost{ background:var(--pine-soft); color:var(--pine); }
+.code{ display:inline-block; font:700 26px/1.2 ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace; letter-spacing:4px; background:var(--pine-soft); color:var(--pine); border-radius:12px; padding:10px 16px; margin:6px 0; }
+.note{ font-size:13px; color:var(--faint); }
+.err{ color:var(--coral); font-weight:600; }
+footer{ padding:18px 0 40px; font-size:13px; color:var(--faint); }
+[data-lang]{ display:none; } html[lang="hu"] [data-lang="hu"], html[lang="en"] [data-lang="en"]{ display:block; }
+html[lang="hu"] span[data-lang="hu"], html[lang="en"] span[data-lang="en"]{ display:inline; }
+.small-card{ max-width:520px; margin:24px auto; }
+/* join / confirmed: állapot szerinti blokkok */
+.show-invite, .show-family, .show-code, .show-nocode, .show-desktop, .show-ok, .show-err{ display:none !important; }
+body.is-invite .show-invite, body.is-family .show-family, body.has-code .show-code, body.no-code .show-nocode, body.not-android .show-desktop, body.is-ok .show-ok, body.is-error .show-err{ display:block !important; }
+html[lang="hu"] body.is-invite .show-invite[data-lang="en"], html[lang="en"] body.is-invite .show-invite[data-lang="hu"],
+html[lang="hu"] body.is-family .show-family[data-lang="en"], html[lang="en"] body.is-family .show-family[data-lang="hu"],
+html[lang="hu"] body.has-code .show-code[data-lang="en"], html[lang="en"] body.has-code .show-code[data-lang="hu"],
+html[lang="hu"] body.no-code .show-nocode[data-lang="en"], html[lang="en"] body.no-code .show-nocode[data-lang="hu"],
+html[lang="hu"] body.not-android .show-desktop[data-lang="en"], html[lang="en"] body.not-android .show-desktop[data-lang="hu"],
+html[lang="hu"] body.is-ok .show-ok[data-lang="en"], html[lang="en"] body.is-ok .show-ok[data-lang="hu"],
+html[lang="hu"] body.is-error .show-err[data-lang="en"], html[lang="en"] body.is-error .show-err[data-lang="hu"]{ display:none !important; }
+</style></head>
+<body data-page="confirmed"><div class="wrap">
+<header class="top"><div class="brand"><div class="logo">FB</div><div><h1>FamilyBoard</h1><div class="by">AuronLabs Interactive</div></div></div>
+<div class="langs" role="group" aria-label="Language"><button data-set="hu" aria-pressed="false">Magyar</button><button data-set="en" aria-pressed="false">English</button></div></header>
+<section class="card show-ok">
+  <h2 data-lang="hu">Az e-mail címed megerősítve ✓</h2><h2 data-lang="en">Your email address is confirmed ✓</h2>
+  <p data-lang="hu">Nyisd meg a FamilyBoardot, és lépj be az e-mail címeddel és a jelszavaddal.</p>
+  <p data-lang="en">Open FamilyBoard and sign in with your email address and password.</p>
+  <div class="cta"><a class="btn open-app" href="#"><span data-lang="hu">Megnyitás az appban</span><span data-lang="en">Open in the app</span></a></div>
+  <p class="note" data-lang="hu">Ha ezt a számítógépen olvasod, nincs más teendő: lépj be a telefonodon.</p>
+  <p class="note" data-lang="en">If you’re reading this on a computer, there’s nothing else to do — just sign in on your phone.</p>
+</section>
+<section class="card show-err">
+  <h2 data-lang="hu">A link lejárt vagy már felhasználták</h2><h2 data-lang="en">The link has expired or was already used</h2>
+  <p data-lang="hu">Próbálj meg belépni az appban — ha a címed még nincs megerősítve, ott kérhetsz új levelet, vagy beírhatod a levélben lévő kódot.</p>
+  <p data-lang="en">Try signing in in the app — if your address isn’t confirmed yet, you can request a new email there or enter the code from the email.</p>
+  <div class="cta"><a class="btn open-app" href="#"><span data-lang="hu">Megnyitás az appban</span><span data-lang="en">Open in the app</span></a></div>
+</section>
+<footer><a href="../#privacy-hu" data-lang="hu">Adatkezelés</a><a href="../#privacy-en" data-lang="en">Privacy</a> · <a href="../">FamilyBoard</a> · support@auronlabsinteractive.com</footer>
+</div><script>// FamilyBoard landing (v1.2) — nyelvváltás + a join / confirmed oldalak logikája. Adatot nem küld sehová.
+(function () {
+  var PKG = 'com.mfb.family';
+  var PLAY = 'https://play.google.com/store/apps/details?id=' + PKG;
+  var html = document.documentElement;
+  function pickLang() {
+    var h = (location.hash || '').match(/-(hu|en)$/);
+    if (h) return h[1];
+    try { var s = localStorage.getItem('fb_lang'); if (s === 'hu' || s === 'en') return s; } catch (e) {}
+    return /^hu/i.test(navigator.language || '') ? 'hu' : 'en';
+  }
+  function setLang(l) {
+    html.lang = l;
+    try { localStorage.setItem('fb_lang', l); } catch (e) {}
+    var bs = document.querySelectorAll('.langs button');
+    for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-set') === l ? 'true' : 'false');
+  }
+  setLang(pickLang());
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.langs button');
+    if (b) setLang(b.getAttribute('data-set'));
+  });
+  window.addEventListener('hashchange', function () { var h = (location.hash || '').match(/-(hu|en)$/); if (h) setLang(h[1]); });
+
+  var android = /Android/i.test(navigator.userAgent || '');
+  // Android: intent:// — ha nincs telepítve, a Play Áruházba visz; máshol a sima familyboard:// link
+  function appLink(path) {
+    return android ? 'intent://' + path + '#Intent;scheme=familyboard;package=' + PKG + ';S.browser_fallback_url=' + encodeURIComponent(PLAY) + ';end' : 'familyboard://' + path;
+  }
+  function setText(sel, t) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].textContent = t; }
+  function setHref(sel, h) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].setAttribute('href', h); }
+  setHref('.play-link', PLAY);
+  var page = document.body.getAttribute('data-page');
+
+  if (page === 'join') {
+    var q = new URLSearchParams(location.search);
+    var inv = (q.get('i') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var fam = (q.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var code = '', path = '';
+    if (/^[A-Z0-9]{8}$/.test(inv)) { code = inv.slice(0, 4) + '-' + inv.slice(4); path = 'invite/' + code; document.body.classList.add('is-invite'); }
+    else if (/^[A-Z0-9]{4,12}$/.test(fam)) { code = fam; path = 'join/' + code; document.body.classList.add('is-family'); }
+    if (code) { setText('.the-code', code); setHref('.open-app', appLink(path)); document.body.classList.add('has-code'); }
+    else document.body.classList.add('no-code');
+    if (!android) document.body.classList.add('not-android');
+  }
+  if (page === 'confirmed') {
+    // a Supabase a munkamenetet a # után küldi — itt NEM használjuk: azonnal töröljük a címsorból és az előzményekből
+    var frag = location.hash || '';
+    var err = /error/.test(frag) || /error/.test(location.search);
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+    document.body.classList.add(err ? 'is-error' : 'is-ok');
+    setHref('.open-app', appLink('auth/confirmed'));
+  }
+})();
+</script></body></html>

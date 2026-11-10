@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050810">
+<meta name="description" content="Privacy policy, terms of service and account deletion for PROSPERITY: 2056 by AuronLabs Interactive.">
+<title>AuronLabs Interactive · PROSPERITY: 2056 — Legal &amp; Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#050810;--panel:#0c1118;--border:#1a2535;--amber:#f5a623;--teal:#00d4aa;--text:#d8e0ec;--muted:#6b7a94;
+    --mono:'JetBrains Mono',ui-monospace,monospace;--body:'Sora',system-ui,sans-serif;--display:'Cinzel',serif;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;font-size:15px;
+    padding:0 18px 60px;max-width:780px;margin:0 auto;
+    background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(245,166,35,.07),transparent 70%);}
+  header{text-align:center;padding:44px 0 26px}
+  h1{font-family:var(--display);font-size:clamp(26px,7vw,40px);font-weight:900;letter-spacing:.06em;margin:0 0 6px;
+    background:linear-gradient(180deg,#ffd48a,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .studio{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--amber);text-transform:uppercase;margin-bottom:10px}
+  .subtitle{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+  .langbar{display:flex;gap:8px;justify-content:center;margin-top:20px}
+  .langbar button{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;padding:9px 18px;border-radius:9px;
+    border:1.5px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:.15s}
+  .langbar button.on{border-color:var(--amber);color:var(--amber);background:rgba(245,166,35,.1)}
+  .toc{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:0 0 26px}
+  .toc a{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-decoration:none;
+    padding:7px 12px;border:1px solid var(--border);border-radius:8px;transition:.15s}
+  .toc a:hover{color:var(--amber);border-color:var(--amber)}
+  section{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px 24px;margin-bottom:18px;scroll-margin-top:16px}
+  section.hl{border-color:rgba(245,166,35,.42);box-shadow:0 0 40px rgba(245,166,35,.05)}
+  h2{font-family:var(--display);font-size:21px;font-weight:700;color:var(--amber);margin:0 0 16px;
+    padding-bottom:12px;border-bottom:1px solid var(--border);letter-spacing:.02em}
+  h3{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);
+    margin:26px 0 10px;text-transform:uppercase}
+  h4{font-family:var(--body);font-size:15px;font-weight:700;color:var(--text);margin:0 0 5px}
+  p{margin:0 0 11px}
+  p.bullet{padding-left:18px;position:relative}
+  p.bullet::before{content:"▸";position:absolute;left:0;color:var(--amber);opacity:.75}
+  p.lead{color:var(--muted)}
+  p.note{font-size:13px;color:var(--muted);border-left:2px solid var(--border);padding-left:14px;margin-top:18px}
+  .opt{display:flex;gap:14px;padding:16px;border:1px solid var(--border);border-radius:12px;margin-bottom:11px;background:rgba(255,255,255,.015)}
+  .optnum{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:rgba(245,166,35,.13);border:1px solid rgba(245,166,35,.4);
+    color:var(--amber);font-family:var(--mono);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .opt p{margin:0;font-size:14px}
+  ul{padding-left:20px;margin:0 0 12px} li{margin-bottom:5px}
+  a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(245,166,35,.3)}
+  a:hover{border-bottom-color:var(--amber)}
+  b{color:#fff;font-weight:700}
+  footer{text-align:center;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.12em;
+    margin-top:34px;padding-top:22px;border-top:1px solid var(--border);line-height:2}
+  .lang-hu{display:none}
+  @media(max-width:520px){section{padding:20px 17px} body{font-size:14.5px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="studio">AuronLabs Interactive</div>
+  <h1>PROSPERITY: 2056</h1>
+  <div class="subtitle" id="sub">Official privacy, terms &amp; data portal</div>
+  <div class="langbar">
+    <button id="b-en" class="on" onclick="setLang('en')">ENGLISH</button>
+    <button id="b-hu" onclick="setLang('hu')">MAGYAR</button>
+  </div>
+</header>
+
+<div class="lang lang-en">
+  <nav class="toc">
+    <a href="#delete-en">Data deletion</a><a href="#privacy-en">Privacy policy</a><a href="#terms-en">Terms of service</a><a href="#licenses-en">Licenses & info</a>
+  </nav>
+
+  <section id="delete-en" class="hl">
+    <h2>Account &amp; data deletion</h2>
+    <p class="lead">You can request full deletion of your account and all associated data at any time. There are two ways:</p>
+    <div class="opt"><div class="optnum">1</div><div><h4>In the game (immediate)</h4><p>Open the profile menu, scroll to <b>Danger zone</b>, and tap <b>Delete account</b>. You will be asked to confirm twice — the second step requires typing your email address. Deletion is immediate and irreversible.</p></div></div>
+    <div class="opt"><div class="optnum">2</div><div><h4>By email (no app needed)</h4><p>Write to <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a> with the subject <b>Account Deletion Request</b>, from the email address registered in the game. Requests are fulfilled within 30 days.</p></div></div>
+    <h3>What gets deleted</h3>
+    <ul><li>your registration (email address and login credentials)</li>
+<li>all of your player profiles</li>
+<li>every save, statistic, achievement and running game</li>
+<li>all countries you built in the country builder</li>
+<li>your Thaler balance and every unlock</li></ul>
+    <p class="note">Nothing is retained after deletion except what we are legally required to keep. Guest-mode players have no server-side data at all — their game lives only on their own device.</p>
+  </section>
+
+  <section id="privacy-en"><h2>Privacy policy</h2><p>Last updated: July 2026</p>
+<h3>1. DATA CONTROLLER</h3>
+<p>“PROSPERITY: 2056” (hereinafter “the Game”) is developed and operated by AuronLabs Interactive (“we”, “us”, “our”), an independent game developer based in Hungary (European Union).</p>
+<p>Contact email: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p>
+<h3>2. APPLICABILITY &amp; AGE RESTRICTION</h3>
+<p>The Game is rated PEGI 12 / ESRB Teen. It is not intended for children under the age of 13 (or under 16 in certain EU jurisdictions without parental consent). We do not knowingly collect personal data from children under these ages. We strongly advise users to choose a pseudonymous username and refrain from using their real names.</p>
+<h3>3. DATA WE COLLECT AND HOW WE USE IT</h3>
+<p>We process data under GDPR principles (lawful basis: contract performance Art. 6(1)(b) and legitimate interest Art. 6(1)(f)).</p>
+<p>A) ACCOUNT &amp; CLOUD DATA (Supabase EU)</p>
+<p>To enable cloud saves, cross-device synchronization, secure currency (Tallér) balances, and to prevent memory manipulation, we collect:</p>
+<p class="bullet">Account credentials: email address and securely salted/hashed password tokens (via Supabase Authentication).</p>
+<p class="bullet">Gameplay state: user-selected pseudonymous username, country profiles, game progress, achievements, and unlocked assets.</p>
+<p class="bullet">Guest mode: if you choose Guest Mode, gameplay is tied to a pseudonymous, device-level token without collecting an email address.</p>
+<p>B) TECHNICAL &amp; CRASH LOGS</p>
+<p>In the event of an application error, a local crash log is generated (error stack trace, app version, user-agent/device model). When synced for diagnostic purposes, IP addresses and device parameters are logged in secure server logs to maintain platform stability.</p>
+<p>C) THIRD-PARTY ADVERTISING (Google AdMob)</p>
+<p>To keep the Game free, we integrate Google AdMob. AdMob may collect pseudonymous identifiers (such as Device Advertising ID) and IP addresses to serve non-intrusive ads.</p>
+<p class="bullet">Content filtering: all ads are hard-restricted to Teen/PG levels. Sensitive categories (gambling, adult, alcohol) are strictly blocked.</p>
+<p class="bullet">EU consent (GDPR): EEA users are presented with a User Messaging Platform (UMP) consent banner upon first launch to allow or opt out of personalized tracking.</p>
+<h3>4. DATA STORAGE AND EU LOCATION</h3>
+<p>All cloud database infrastructure (Supabase) is hosted within the European Economic Area (EEA / EU Region). Your data does not leave the EU/EEA without appropriate GDPR-compliant safeguards.</p>
+<h3>5. USER RIGHTS &amp; ACCOUNT DELETION</h3>
+<p>Under GDPR, you hold the following rights:</p>
+<p class="bullet">Right to access &amp; export: you may request a copy of your server-stored profile data.</p>
+<p class="bullet">Right to erasure: you can permanently purge your account, saves and email from our database directly in the Game via Settings &gt; Danger zone &gt; Delete account.</p>
+<p class="bullet">Web-based erasure: if you do not have the app installed, you may request full data deletion by emailing <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a> with the subject “Account Deletion Request”. Requests are fulfilled within 30 days.</p>
+<h3>6. THIRD-PARTY PRIVACY POLICIES</h3>
+<p class="bullet">Supabase: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></p>
+<p class="bullet">Google AdMob &amp; services: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+<h3>7. CONTACT</h3>
+<p>For any privacy-related inquiries: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p></section>
+  <section id="terms-en"><h2>Terms of service</h2><p>Last updated: July 2026</p>
+<h3>1. ACCEPTANCE &amp; AGE</h3>
+<p>By downloading or playing PROSPERITY: 2056, you agree to these Terms. You must be at least 13 years old (or have parental/guardian consent) to use the Game.</p>
+<h3>2. INTELLECTUAL PROPERTY &amp; FICTIONAL DISCLAIMER</h3>
+<p>All titles, code, artwork, and design elements are the intellectual property of AuronLabs Interactive.</p>
+<p>DISCLAIMER: PROSPERITY: 2056 is a work of fiction. All nations, events, economic metrics, and entities depicted in the game are entirely fictional. Any resemblance to real-world nations, political figures, or events is purely coincidental.</p>
+<h3>3. VIRTUAL CURRENCY (“Tallér”)</h3>
+<p>The game features an in-game points system (“Tallér”). Tallér is strictly a digital gameplay metric earned through playtime. It HAS NO REAL MONEY VALUE, cannot be purchased with fiat currency, and cannot be exchanged, transferred, or redeemed for real-world money.</p>
+<h3>4. FAIR PLAY &amp; ACCOUNT TERMINATION</h3>
+<p>You agree not to exploit bugs, reverse-engineer game code, or manipulate server-side API requests. AuronLabs Interactive reserves the right to terminate accounts or clear leaderboard scores generated through unauthorized memory/data manipulation.</p>
+<h3>5. LIMITATION OF LIABILITY</h3>
+<p>The Game is provided “AS IS” without warranties of any kind. AuronLabs Interactive is not liable for data loss resulting from device malfunction or local cache clears prior to cloud synchronization.</p>
+<h3>6. CONTACT</h3>
+<p>For legal inquiries: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p></section>
+  <section id="licenses-en"><h2>Licenses & info</h2><p>Publisher: AuronLabs Interactive (EU)</p>
+<p>Contact: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p>
+<p>Version: v1.3 (PEGI 12)</p>
+<h3>PRIVACY &amp; CLOUD SAVES</h3>
+<p class="bullet">In Guest Mode, your game save data is stored locally on your device.</p>
+<p class="bullet">If you create an account, your saves, Tallér balance and profile data are securely synced to Supabase servers located in the European Economic Area (EEA / EU Region).</p>
+<p class="bullet">The game does not collect location data, contacts, or sensitive personal information.</p>
+<h3>ADVERTISEMENTS</h3>
+<p class="bullet">In-game advertisements are provided by Google AdMob. All ads are strictly filtered to maintain PEGI 12 / Teen compliance.</p>
+<h3>ACCOUNT DELETION</h3>
+<p class="bullet">You can permanently delete your account and all associated cloud data at any time via Settings &gt; Delete account, or by emailing <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a>.</p>
+<h3>OPEN SOURCE LICENSES</h3>
+<p class="bullet">React (MIT)</p>
+<p class="bullet">Cinzel, Sora &amp; JetBrains Mono (SIL Open Font License)</p></section>
+</div>
+<div class="lang lang-hu">
+  <nav class="toc">
+    <a href="#delete-hu">Adattörlés</a><a href="#privacy-hu">Adatkezelési tájékoztató</a><a href="#terms-hu">Felhasználási feltételek</a><a href="#licenses-hu">Licencek &amp; infó</a>
+  </nav>
+
+  <section id="delete-hu" class="hl">
+    <h2>Fiók és adatok törlése</h2>
+    <p class="lead">Bármikor kérheted a fiókod és minden hozzá tartozó adatod teljes törlését. Két út áll rendelkezésre:</p>
+    <div class="opt"><div class="optnum">1</div><div><h4>A játékban (azonnali)</h4><p>Nyisd meg a profil-menüt, görgess a <b>Veszélyes zóna</b> részhez, és koppints a <b>Fiók törlése</b> gombra. Két lépésben kell megerősítened — a másodiknál be kell gépelned az e-mail címedet. A törlés azonnali és visszavonhatatlan.</p></div></div>
+    <div class="opt"><div class="optnum">2</div><div><h4>E-mailben (az app nélkül is)</h4><p>Írj a <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a> címre <b>Account Deletion Request</b> tárggyal, a játékban regisztrált e-mail címedről. A kérelmeket 30 napon belül teljesítjük.</p></div></div>
+    <h3>Mi törlődik</h3>
+    <ul><li>a regisztrációd (e-mail cím és belépési adatok)</li>
+<li>az összes játékos-profilod</li>
+<li>minden mentés, statisztika, eredmény és futó játék</li>
+<li>az országépítőben létrehozott összes országod</li>
+<li>a Tallér-egyenleged és minden feloldásod</li></ul>
+    <p class="note">A törlés után semmi nem marad meg, kivéve amit jogszabály kötelezővé tesz. A vendég módban játszóknak egyáltalán nincs szerveroldali adatuk — a játékuk kizárólag a saját készülékükön él.</p>
+  </section>
+
+  <section id="privacy-hu"><h2>Adatkezelési tájékoztató</h2><p>Hatályos: 2026. július</p>
+<h3>1. AZ ADATKEZELŐ</h3>
+<p>A „PROSPERITY: 2056” mobilalkalmazás (a továbbiakban: „Játék”) fejlesztési és kiadói feladatait az AuronLabs Interactive (egyéni fejlesztő, Magyarország / EU) látja el.</p>
+<p>Kapcsolattartási e-mail: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p>
+<h3>2. HATÁLY ÉS KORHATÁR-KORLÁTOZÁS</h3>
+<p>A Játék PEGI 12 / ESRB Teen besorolással rendelkezik. A Játék nem készült 13 év alatti gyermekek számára (az EU egyes tagállamaiban 16 év alattiak számára szülői hozzájárulás nélkül). Tudatosan nem gyűjtünk személyes adatokat ezen korcsoportba tartozó gyermekektől. Nyomatékosan javasoljuk a felhasználóknak, hogy álnevet (fiktív felhasználónevet) válasszanak, és kerüljék a valódi nevük használatát.</p>
+<h3>3. AZ ÁLTALUNK KEZELT ADATOK ÉS AZ ADATKEZELÉS CÉLJA</h3>
+<p>Az adatokat az EU GDPR rendelkezéseinek megfelelően kezeljük (Jogalap: Szerződés teljesítése 6. cikk (1) b) és Jogos érdek 6. cikk (1) f)).</p>
+<p>A) FIÓK- ÉS FELHŐADATOK (Supabase EU)</p>
+<p>A felhőalapú mentés, az eszközök közötti szinkronizáció, a virtuális valuta (Tallér) biztonságos nyilvántartása és a memória-manipuláció elkerülése érdekében gyűjtjük:</p>
+<p class="bullet">Fiókadatok: e-mail cím és biztonságosan titkosított (hash-elt) jelszó-értékek (Supabase Authentication).</p>
+<p class="bullet">Játékállapot: felhasználó által választott álnév, országprofilok, előrehaladás, elért eredmények és feloldott elemek.</p>
+<p class="bullet">Vendég mód: vendég mód választása esetén a játékmenet egy eszközszintű, álnevesített azonosítóhoz kapcsolódik, e-mail cím gyűjtése nélkül.</p>
+<p>B) TECHNIKAI ÉS HIBANAPLÓK</p>
+<p>Alkalmazáshiba esetén helyi napló keletkezik (hiba leírása, alkalmazás verziója, eszköz modellje). Diagnosztikai célú szinkronizáció során az IP-címek és az eszközparaméterek biztonságos szervernaplókba kerülnek a platform stabilitásának fenntartása érdekében.</p>
+<p>C) HARMADIK FÉLTŐL SZÁRMAZÓ HIRDETÉSEK (Google AdMob)</p>
+<p>A Játék ingyenes biztosítása érdekében a Google AdMob rendszert használjuk. Az AdMob álnevesített azonosítókat (pl. hirdetési azonosító) és IP-címet gyűjthet a nem tolakodó hirdetések megjelenítéséhez.</p>
+<p class="bullet">Tartalomszűrés: minden hirdetés szigorúan PEGI 12 / Teen szintre korlátozott. Az érzékeny kategóriák (szerencsejáték, felnőtt tartalom, alkohol) blokkolva vannak.</p>
+<p class="bullet">EU hozzájárulás (GDPR): az EGT területén élő felhasználók az első indításkor hozzájárulási ablakot (UMP) látnak a személyre szabott nyomon követés engedélyezéséhez vagy elutasításához.</p>
+<h3>4. ADATTÁROLÁS ÉS EU ADATKÖZPONT</h3>
+<p>Minden felhőadatbázis-struktúra (Supabase) az Európai Gazdasági Térségen (EGT / EU régió) belül található. Az Ön adatai nem hagyják el az EU/EGT területét megfelelő GDPR-kompatibilis védelmi intézkedések nélkül.</p>
+<h3>5. A FELHASZNÁLÓK JOGAI ÉS A FIÓK TÖRLÉSE</h3>
+<p>A GDPR értelmében Önt a következő jogok illetik meg:</p>
+<p class="bullet">Hozzáférés és adathordozhatóság: kérheti a szerveren tárolt profiladatainak másolatát.</p>
+<p class="bullet">Törléshez való jog: fiókját, mentéseit és e-mail címét véglegesen törölheti a Játékon belül a Beállítások &gt; Veszélyes zóna &gt; Fiók törlése menüpontban.</p>
+<p class="bullet">Webes törlés: ha az alkalmazás nincs telepítve, a teljes adattörlést e-mailben kérheti a <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a> címen, „Account Deletion Request” tárggyal. A kérelmeket 30 napon belül teljesítjük.</p>
+<h3>6. HARMADIK FELEK ADATVÉDELMI IRÁNYELVEI</h3>
+<p class="bullet">Supabase: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></p>
+<p class="bullet">Google AdMob és szolgáltatások: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+<h3>7. KAPCSOLATTARTÁS</h3>
+<p>Adatvédelmi kérdésekben: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p></section>
+  <section id="terms-hu"><h2>Felhasználási feltételek</h2><p>Hatályos: 2026. július</p>
+<h3>1. ELFOGADÁS ÉS KORHATÁR</h3>
+<p>A PROSPERITY: 2056 letöltésével vagy játékával Ön elfogadja a jelen Feltételeket. A Játék használatához legalább 13 évesnek kell lennie (vagy szülői/gondviselői hozzájárulással kell rendelkeznie).</p>
+<h3>2. SZELLEMI TULAJDON ÉS FIKTÍV TARTALOM</h3>
+<p>Minden cím, kód, grafika és tervezési elem az AuronLabs Interactive szellemi tulajdona.</p>
+<p>NYILATKOZAT: A PROSPERITY: 2056 egy kitalált mű. A játékban ábrázolt összes nemzet, esemény, gazdasági mutató és entitás teljesen fiktív. Bármilyen hasonlóság a valós nemzetekkel, politikai szereplőkkel vagy eseményekkel kizárólag a véletlen műve.</p>
+<h3>3. VIRTUÁLIS VALUTA („Tallér”)</h3>
+<p>A játék tartalmaz egy játékon belüli pontrendszert („Tallér”). A Tallér kizárólag a játékidővel megszerezhető digitális mutató. VALÓDI PÉNZÉRTÉKKEL NEM RENDELKEZIK, hivatalos pénznemért nem vásárolható meg, és nem váltható át, nem ruházható át, valamint nem váltható be valódi pénzre.</p>
+<h3>4. TISZTESSÉGES JÁTÉK ÉS FIÓK FELFÜGGESZTÉSE</h3>
+<p>Ön vállalja, hogy nem használ ki programhibákat, nem végez visszafejtést a játék kódján, és nem manipulálja a szerveroldali API kéréseket. Az AuronLabs Interactive fenntartja a jogot a jogosulatlan memória- vagy adatmanipulációval elért fiókok megszüntetésére vagy a ranglista-eredmények törlésére.</p>
+<h3>5. FELELŐSSÉG KORLÁTOZÁSA</h3>
+<p>A Játékot „AHOGY VAN” alapon biztosítjuk, bármilyen kifejezett vagy hallgatólagos garancia nélkül. Az AuronLabs Interactive nem vállal felelősséget az eszköz meghibásodásából vagy a felhőalapú szinkronizálás előtti helyi gyorsítótár-törlésből eredő adatvesztésért.</p>
+<h3>6. KAPCSOLATTARTÁS</h3>
+<p>Jogi megkeresések: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p></section>
+  <section id="licenses-hu"><h2>Licencek &amp; infó</h2><p>Kiadó: AuronLabs Interactive (EU)</p>
+<p>Kapcsolat: <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a></p>
+<p>Verzió: v1.3 (PEGI 12)</p>
+<h3>ADATVÉDELEM ÉS MENTÉS</h3>
+<p class="bullet">Vendég módban a mentésed helyben (a készülékeden) tárolódik.</p>
+<p class="bullet">Fiók regisztrációja esetén a mentéseid, a Tallér-egyenleged és a profilod a Supabase biztonságos Európai Gazdasági Térségen belüli (EGT / EU régió) felhőszerverére kerülnek.</p>
+<p class="bullet">A játék nem gyűjt helyadatokat, névjegyeket vagy érzékeny személyes adatokat.</p>
+<h3>HIRDETÉSEK</h3>
+<p class="bullet">A játékban megjelenő hirdetéseket a Google AdMob biztosítja. A hirdetések szigorúan szűrtek (PEGI 12 / Teen besorolás).</p>
+<h3>FIÓK TÖRLÉSE</h3>
+<p class="bullet">A fiókodat és az összes felhőben tárolt adatodat bármikor véglegesen törölheted a Beállítások &gt; Fiók törlése gombbal, vagy e-mailben a <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a> címen.</p>
+<h3>NYÍLT FORRÁSKÓDÚ LICENCEK</h3>
+<p class="bullet">React (MIT)</p>
+<p class="bullet">Cinzel, Sora és JetBrains Mono (SIL Open Font License)</p></section>
+</div>
+
+<footer>
+  © 2026 AuronLabs Interactive · Game version: v1.3<br>
+  <a href="mailto:privacy@auronlabsinteractive.com">privacy@auronlabsinteractive.com</a>
+</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('.lang').forEach(e=>e.style.display='none');
+  document.querySelector('.lang-'+l).style.display='block';
+  document.getElementById('b-en').className = l==='en'?'on':'';
+  document.getElementById('b-hu').className = l==='hu'?'on':'';
+  document.getElementById('sub').innerHTML = l==='hu' ? "Hivatalos adatvédelmi, jogi és adattörlési portál" : "Official privacy, terms &amp; data portal";
+  document.documentElement.lang = l;
+  try{ localStorage.setItem('portal_lang', l); }catch(e){}
+  if(location.hash) jumpToHash();
+}
+function jumpToHash(){
+  var h = (location.hash||'').replace('#','');
+  if(!h) return;
+  var base = h.replace(/-(en|hu)$/,'');
+  var lang = document.documentElement.lang || 'en';
+  var el = document.getElementById(base+'-'+lang) || document.getElementById(h);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+window.addEventListener('hashchange', jumpToHash);
+(function(){
+  var l=null;
+  try{ l = localStorage.getItem('portal_lang'); }catch(e){}
+  if(!l) l = (navigator.language||'').toLowerCase().startsWith('hu') ? 'hu' : 'en';
+  setLang(l);
+  setTimeout(jumpToHash, 60);
+})();
+</script>
+</body></html>
